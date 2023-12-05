@@ -4,10 +4,10 @@ from products.models import Recipe, Category
 # Create your views here.
 
 def recipes(request):
-    recipess = Recipe.objects.all()[::-1] # Select * from Recipe
+    recipe_list = Recipe.objects.all()[::-1] # Select * from Recipe
     categories = Category.objects.all()
     context = {
-       "recipe_lists" : recipess,
+       "recipe_lists" : recipe_list,
        "categories" : categories
     }
     return render(request, 'recipes.html', context)
