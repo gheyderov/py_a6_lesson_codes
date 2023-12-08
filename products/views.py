@@ -11,3 +11,5 @@ def recipes(request):
        "categories" : categories
     }
     return render(request, 'recipes.html', context)
+
+
