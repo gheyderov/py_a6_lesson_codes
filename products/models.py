@@ -21,6 +21,7 @@ class Recipe(AbstractModel):
     description = models.CharField('description', max_length=100)
     image = models.ImageField('image', upload_to='recipe_images/')
     cover_image = models.ImageField('cover_image', upload_to='recipe_images/')
+    
 
     def __str__(self) -> str:
         return self.title
