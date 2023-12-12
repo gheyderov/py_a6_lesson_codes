@@ -1,0 +1,16 @@
+User
+Basket (user, basket_items, is_active)
+BasketItems (product, quantity)
+Order (user, basket, transaction_code)
+Wishlist (user, product)
+Product
+ProductCategory
+Size
+Color
+ProductImage
+ProductReview
+Blog
+BlogCategory
+BlogReview
+Contact
+Subscribe
