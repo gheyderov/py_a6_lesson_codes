@@ -1,4 +1,4 @@
-{% load static %}
+{% load static tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,9 +41,9 @@
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
                     <li class="nav-item"><a href="strories.html" class="nav-link">Stories</a></li>
-                    <li class="nav-item"><a href="recipes.html" class="nav-link">Recipes</a></li>
+                    <li class="nav-item"><a href="{% url 'recipes' %}" class="nav-link">Recipes</a></li>
                     <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
                     <li><a href="" class="btn btn-black px-3 px-md-4 py-3">Sign in</a></li>
                 </ul>
@@ -89,11 +89,10 @@
                     <div class="ftco-footer-widget mb-4">
                         <h2 class="ftco-heading-2">Categories</h2>
                         <ul class="list-unstyled">
-                            <li><a href="#" class="py-2 d-block">Food</a></li>
-                            <li><a href="#" class="py-2 d-block">Restaurant</a></li>
-                            <li><a href="#" class="py-2 d-block">Dessert</a></li>
-                            <li><a href="#" class="py-2 d-block">Lifestyle</a></li>
-                            <li><a href="#" class="py-2 d-block">Recipes</a></li>
+                            {%  get_categories 5 as categories %}
+                            {% for category in categories %}
+                            <li><a href="#" class="py-2 d-block">{{category.title}}</a></li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>

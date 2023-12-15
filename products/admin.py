@@ -24,7 +24,7 @@ class RecipeImageAdmin(admin.TabularInline):
 
 @admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'category']
+    list_display = ['id', 'title', 'category', 'get_tags']
     list_display_links = ['id', 'title']
     list_editable = ['category']
     list_filter = ['category']
@@ -35,3 +35,9 @@ class RecipeAdmin(admin.ModelAdmin):
         'slug' : ('title',)
     }
     form = RecipeAdminForm
+
+    def get_tags(self, obj):
+        tags = []
+        for tag in obj.tags.all():
+            tags.append(tag.title)
+        return tags
