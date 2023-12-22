@@ -6,9 +6,9 @@ from core.models import Contact, Blog
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
     list_display = ['name']
-    prepopulated_fields = {
-        'full_name' : ('name', 'surname')
-    }
+    # prepopulated_fields = {
+    #     'full_name' : ('name', 'surname')
+    # }
 
 
 @admin.register(Blog)

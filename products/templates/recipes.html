@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static tags %}
 
 {% block content %}
 
@@ -36,7 +36,7 @@
                                 <p class="meta d-flex"><span class="pr-3">{{ recipe.category }}</span><span class="ml-auto pl-3">{{ recipe.created_at | date:"d M Y" }}</span>
                                 </p>
                                 <h3><a href="{% url 'recipe_detail' recipe.id %}">{{ recipe.title }}</a></h3>
-                                <p>{{ recipe.description }}
+                                <p>{{ recipe.description | upper }}
                                 </p>
                                 <p class="mb-0"><a href="{% url 'recipe_detail' recipe.id %}" class="btn btn-primary">Read More <span
                                         class="icon-arrow_forward ml-4"></span></a></p>
@@ -102,6 +102,7 @@
     </div>
 </section>
 
+{% recent_recipes %}
 
 <section class="ftco-subscribe ftco-section bg-light">
     <div class="overlay">
