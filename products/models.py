@@ -22,7 +22,7 @@ class Recipe(AbstractModel):
     image = models.ImageField('image', upload_to='recipe_images/')
     cover_image = models.ImageField('cover_image', upload_to='recipe_images/')
     slug = models.SlugField('slug', max_length=200, null=True, blank=True)
-    # view_count = models.IntegerField()
+    view_count = models.IntegerField('view_count', default = 0)
 
 
     
