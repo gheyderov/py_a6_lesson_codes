@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "accounts",
     "core",
     "products",
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +53,21 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_URL = 'logout'
+LOGOUT_REDIRECT_URL = 'login'
+
+SOCIAL_AUTH_FACEBOOK_KEY = 660906872376352        # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = 'e932256b243b7d27104a90862186a2b2'  # App Secret
+
 
 ROOT_URLCONF = "food_stories.urls"
 
@@ -130,6 +146,14 @@ USE_TZ = True
 
 AUTH_USER_MODEL = 'accounts.User'
 
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'g.heyderov@gmail.com'
+EMAIL_HOST_PASSWORD = 'xfvwwdptxwmtdfry'
+EMAIL_PORT = 587
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
