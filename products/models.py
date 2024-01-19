@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.urls import reverse_lazy
+
 
 User = get_user_model()
 
@@ -31,6 +33,9 @@ class Recipe(AbstractModel):
 
     def __str__(self) -> str:
         return self.title
+    
+    def get_absolute_url(self):
+        return reverse_lazy('recipe_detail', kwargs = {'pk' : self.pk})
 
     # class Meta:
     #     ordering = ['-created_at']
