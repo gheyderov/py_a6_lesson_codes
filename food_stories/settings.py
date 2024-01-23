@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     "products",
     'social_django',
 ]
-
+# request 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -52,8 +52,10 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "food_stories.middleware.GetUserIpAddress",
+    "food_stories.middleware.BlockUserIpAddress"
 ]
-
+# response
 AUTHENTICATION_BACKENDS = [
     'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',

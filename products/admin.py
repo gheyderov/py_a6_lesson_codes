@@ -1,5 +1,5 @@
 from django.contrib import admin
-from products.models import Category, Tag, Recipe, RecipeImage, RecipeComment
+from products.models import Category, Tag, Recipe, RecipeImage, RecipeComment, BlockedIps
 from django import forms
 
 # Register your models here.
@@ -17,6 +17,7 @@ admin.site.register(Category)
 admin.site.register(Tag)
 admin.site.register(RecipeImage)
 admin.site.register(RecipeComment)
+admin.site.register(BlockedIps)
 
 
 class RecipeImageAdmin(admin.TabularInline):
@@ -32,9 +33,9 @@ class RecipeAdmin(admin.ModelAdmin):
     # list_per_page = 2
     search_fields = ['title', 'category__title']
     inlines = [RecipeImageAdmin]
-    prepopulated_fields = {
-        'slug' : ('title',)
-    }
+    # prepopulated_fields = {
+    #     'slug' : ('title',)
+    # }
     form = RecipeAdminForm
 
     def get_tags(self, obj):

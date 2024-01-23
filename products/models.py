@@ -35,7 +35,7 @@ class Recipe(AbstractModel):
         return self.title
     
     def get_absolute_url(self):
-        return reverse_lazy('recipe_detail', kwargs = {'pk' : self.pk})
+        return reverse_lazy('recipe_detail', kwargs = {'slug' : self.slug})
 
     # class Meta:
     #     ordering = ['-created_at']
@@ -83,3 +83,9 @@ class Tag(AbstractModel):
 
     def __str__(self) -> str:
         return self.title
+
+
+class BlockedIps(AbstractModel):
+    ip_address = models.GenericIPAddressField()
+
+    
