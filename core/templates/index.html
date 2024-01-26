@@ -194,10 +194,10 @@
                             </div>
                         </div>
                         <div class="sidebar-box p-4 ftco-animate">
-                            <form action="#" class="search-form">
+                            <form action="{% url 'recipes' %}" class="search-form" method="get">
                                 <div class="form-group">
                                     <span class="icon icon-search"></span>
-                                    <input type="text" class="form-control" placeholder="Search">
+                                    <input type="text" class="form-control" placeholder="Search" name="searched">
                                 </div>
                             </form>
                         </div>

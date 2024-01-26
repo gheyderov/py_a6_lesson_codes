@@ -24,6 +24,9 @@ class RecipeListView(ListView):
         queryset = super().get_queryset()
         category = self.request.GET.get('category')
         tag = self.request.GET.get('tag')
+        search = self.request.GET.get('searched')
+        if search:
+            queryset = queryset.filter(title__icontains = search)
         if category:
             queryset = queryset.filter(category__id = category)
         if tag:

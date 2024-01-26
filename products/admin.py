@@ -1,6 +1,7 @@
 from django.contrib import admin
 from products.models import Category, Tag, Recipe, RecipeImage, RecipeComment, BlockedIps
 from django import forms
+from modeltranslation.admin import TranslationAdmin
 
 # Register your models here.
 
@@ -13,7 +14,11 @@ class RecipeAdminForm(forms.ModelForm):
             'tags' : forms.CheckboxSelectMultiple
         }
 
-admin.site.register(Category)
+@admin.register(Category)
+class CategoryAdmin(TranslationAdmin):
+    fields = 'title',
+    
+
 admin.site.register(Tag)
 admin.site.register(RecipeImage)
 admin.site.register(RecipeComment)
