@@ -31,6 +31,9 @@ class Recipe(AbstractModel):
     slug = models.SlugField("slug", max_length=200, null=True, blank=True)
     view_count = models.IntegerField("view_count", default=0)
 
+    def author_name(self):
+        return self.author.get_full_name()
+
     def __str__(self) -> str:
         return self.title
     

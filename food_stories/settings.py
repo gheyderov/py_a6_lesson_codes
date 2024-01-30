@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "core",
     "products",
     'social_django',
+    'rest_framework',
 ]
 # request 
 MIDDLEWARE = [

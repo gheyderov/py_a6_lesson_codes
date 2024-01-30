@@ -1,0 +1,43 @@
+from products.models import Category, Tag, Recipe
+from rest_framework import serializers
+
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = (
+            'id',
+            'title'
+        )
+
+
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = (
+            'id',
+            'title'
+        )
+
+
+class RecipeSerializer(serializers.ModelSerializer):
+
+    # category = serializers.CharField(source = 'category.title')
+    category = CategorySerializer()
+    tags = TagSerializer(many = True)
+
+
+    class Meta:
+        model = Recipe
+        fields = (
+            'id',
+            'title',
+            'category',
+            'tags',
+            'author_name',
+            'small_description',
+            'description',
+            'slug',
+            'image',
+            'cover_image'
+        )
