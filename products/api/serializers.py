@@ -41,3 +41,21 @@ class RecipeSerializer(serializers.ModelSerializer):
             'image',
             'cover_image'
         )
+
+
+class RecipeCreateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Recipe
+        fields = (
+            'id',
+            'title',
+            'category',
+            'tags',
+            'author',
+            'small_description',
+            'description',
+            'slug',
+            'image',
+            'cover_image'
+        )
