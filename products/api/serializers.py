@@ -1,7 +1,6 @@
 from products.models import Category, Tag, Recipe
 from rest_framework import serializers
 
-
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
@@ -45,6 +44,8 @@ class RecipeSerializer(serializers.ModelSerializer):
 
 class RecipeCreateSerializer(serializers.ModelSerializer):
 
+    author = serializers.PrimaryKeyRelatedField(read_only = True)
+
     class Meta:
         model = Recipe
         fields = (
@@ -59,3 +60,8 @@ class RecipeCreateSerializer(serializers.ModelSerializer):
             'image',
             'cover_image'
         )
+
+    def validate(self, attrs):
+        request = self.context['request']
+        attrs['author'] = request.user
+        return super().validate(attrs)

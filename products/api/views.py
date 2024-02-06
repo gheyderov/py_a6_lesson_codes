@@ -8,6 +8,7 @@ from products.api.serializers import (
 )
 from rest_framework.decorators import api_view
 from rest_framework.generics import ListAPIView, CreateAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 
 class CategoryAPIView(ListAPIView):
@@ -36,6 +37,7 @@ def tags(request):
 class RecipeListAPIView(ListCreateAPIView):
     serializer_class = RecipeSerializer
     queryset = Recipe.objects.all()
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
     def get_serializer_class(self):
         if self.request.method == "POST":
