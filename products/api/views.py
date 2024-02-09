@@ -17,6 +17,9 @@ class CategoryAPIView(ListAPIView):
 
 
 def categories(request):
+    """
+        Categories List
+    """
     category_lists = Category.objects.all()
     # category_dict = []
     # for category in category_lists:
@@ -35,6 +38,9 @@ def tags(request):
 
 
 class RecipeListAPIView(ListCreateAPIView):
+    """
+        Recipe List Create
+    """
     serializer_class = RecipeSerializer
     queryset = Recipe.objects.all()
     permission_classes = [IsAuthenticatedOrReadOnly]
