@@ -1,5 +1,5 @@
 from django.contrib import admin
-from products.models import Category, Tag, Recipe, RecipeImage, RecipeComment, BlockedIps
+from products.models import Category, Tag, Recipe, RecipeImage, RecipeComment, BlockedIps, Subscriber
 from django import forms
 from modeltranslation.admin import TranslationAdmin
 
@@ -20,6 +20,7 @@ class CategoryAdmin(TranslationAdmin):
     
 
 admin.site.register(Tag)
+admin.site.register(Subscriber)
 admin.site.register(RecipeImage)
 admin.site.register(RecipeComment)
 admin.site.register(BlockedIps)

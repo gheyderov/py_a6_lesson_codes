@@ -1,14 +1,20 @@
-from products.models import Category, Tag, Recipe
+from products.models import Category, Tag, Recipe, Subscriber
 from django.http import JsonResponse
 from products.api.serializers import (
     CategorySerializer,
     TagSerializer,
     RecipeSerializer,
     RecipeCreateSerializer,
+    SubscriberCreateSerializer
 )
 from rest_framework.decorators import api_view
 from rest_framework.generics import ListAPIView, CreateAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
+
+
+class SubscriberCreateAPIView(CreateAPIView):
+    serializer_class = SubscriberCreateSerializer
+    queryset = Subscriber.objects.all()
 
 
 class CategoryAPIView(ListAPIView):

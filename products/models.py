@@ -16,6 +16,13 @@ class AbstractModel(models.Model):
         abstract = True
 
 
+class Subscriber(AbstractModel):
+    email = models.EmailField('email', max_length = 100, unique = True)
+
+    def __str__(self) -> str:
+        return self.email
+
+
 class Recipe(AbstractModel):
     category = models.ForeignKey(
         "Category", related_name="recipes", on_delete=models.CASCADE
