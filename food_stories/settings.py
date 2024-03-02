@@ -21,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-64avpte_@j#rcm-$7(f*xocpr(hs*ee)u#&(6di@#q6nd%6gz9"
+SECRET_KEY = os.environ.get('SECRET_KEY', "v9g&@d^xyu&$ct959(1#+%kg!hcq8ors9jpw_cd^vgsydjw+$!")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False if os.environ.get("DEBUG") else True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -129,10 +129,10 @@ WSGI_APPLICATION = "food_stories.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "stories",
-        "PASSWORD": "12345",
-        "USER": 'tech',
-        "HOST": 'localhost'
+        "NAME": os.environ.get('POSTGRES_DB', 'stories'),
+        "PASSWORD": os.environ.get('POSTGRES_PASSWORD', '12345'),
+        "USER": os.environ.get('POSTGRES_USER', 'tech'),
+        "HOST": os.environ.get('POSTGRES_HOST', 'localhost')
     }
 }
 
@@ -216,5 +216,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-CELERY_BROKER_URL = "redis://localhost:6379"
-CELERY_RESULT_BACKEND = "redis://localhost:6379"
+CELERY_BROKER_URL = f"redis://{os.environ.get('REDIS_HOST', 'localhost')}:6379"
+CELERY_RESULT_BACKEND = f"redis://{os.environ.get('REDIS_HOST', 'localhost')}:6379"
