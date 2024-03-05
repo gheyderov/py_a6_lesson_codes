@@ -126,12 +126,13 @@ WSGI_APPLICATION = "food_stories.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ.get('POSTGRES_DB', 'stories'),
-        "PASSWORD": os.environ.get('POSTGRES_PASSWORD', '12345'),
-        "USER": os.environ.get('POSTGRES_USER', 'tech'),
-        "HOST": os.environ.get('POSTGRES_HOST', 'localhost')
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_DB', 'db_name'),
+        'USER': os.environ.get('POSTGRES_USER', 'user_name'),
+        'PORT': os.environ.get('POSTGRES_PORT', 5432),
+        'HOST': os.environ.get('POSTGRES_HOST', '95.217.178.7'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', '123')
     }
 }
 
